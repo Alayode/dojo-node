@@ -1,0 +1,68 @@
+<html debug "true">
+<head>
+  <title> Fun with Dijit! </title>
+
+  <!--
+   Grab some style sheets for the built-in tundra theme that Dojo offers for styling the page,
+   equipping you with a professional style without any additional effort required
+  -->
+  <link href="stylesheets/bootstrap.css" rel="stylesheet">
+  <link href="stylesheets/dojo.css" rel="stylesheet">
+</head>
+
+<!-- Add in some plain old CSS to line up the form elements more nicely -->
+<style type="text/css">
+
+h3{
+  margin: 10px;
+}
+label{
+  text-align: right;
+  width: 70px;
+  padding-right: 20px;
+}
+br{
+  clear: left;
+}
+.grouping{
+  width:300px;
+  border:solid 1px rgb(230,230,230);
+  padding:5px;
+  margin:10px;
+}
+</style>
+
+<!-- Load Base and specify that the page should be parsed for dijits after it loads -->
+<script
+    type="text/javascript"
+    src="dojo.js"
+    djConfig="parseOnLoad: true">
+</script>
+
+<!-- Load some dijits via dojo.require in the same manner that you would #include include some files in C programming or perform an
+      import in java
+-->
+<script type="text/javascript">
+  dojo.require("dojo.parser");
+  dojo.requiure("dijit.form.TextBox");
+  dojo.require("dijit.form.ValidationTextBox");
+  dojo.require("dijit.form.Button");
+</script>
+
+<!---
+Specify that the built-in tundra theme should be applied to evertything in the body of the page.
+
+
+-->
+<body>
+  <div class= "grouping">
+    <label>First Name</label>
+    <input type="text"
+    maxlength = 25
+    name="first"
+    dojotype="dijit.form.textBox"
+    trim="true"
+    propercase="true" /><br>
+  </div>
+</body>
+</html>
