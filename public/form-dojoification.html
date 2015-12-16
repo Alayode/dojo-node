@@ -7,14 +7,14 @@
    equipping you with a professional style without any additional effort required
   -->
   <link href="stylesheets/bootstrap.css" rel="stylesheet">
-  <link href="stylesheets/dojo.css" rel="stylesheet">
+  <!-- <link href="stylesheets/dojo.css" rel="stylesheet"> -->
 </head>
 
 <!-- Add in some plain old CSS to line up the form elements more nicely -->
 <style type="text/css">
 
 h3{
-  margin: 10px;
+  margin: 20px;
 }
 label{
   text-align: right;
@@ -56,13 +56,39 @@ Specify that the built-in tundra theme should be applied to evertything in the b
 -->
 <body>
   <div class= "grouping">
-    <label>First Name</label>
+    <label>First Name: </label>
     <input type="text"
     maxlength = 25
     name="first"
-    dojotype="dijit.form.textBox"
+    dojotype="dijit.form.TextBox"
     trim="true"
     propercase="true" /><br>
+
+    <label>Last Name: </label>
+    <input type="text"
+    maxlength = 25
+    name="last"
+    dojotype="dijit.form.TextBox"
+    trim="true"
+    propercase="true" /><br>
+
+    <label>Your Email: </label>
+    <input type="text"
+    maxlength = 25
+    name="first"
+    dojotype="dijit.form.ValidationTextBox"
+    trim="true"
+    regExp="[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}"
+    lowercase="true"
+    required="true"
+    invalidMessage = "Please enter a valid email address"/><br>
+
+    <button dojoType = "dijit.form.Buton"
+            onClick="alert('Boom!')">Sign Up!</button>
   </div>
+</form>
+
+<!-- firebug lite -->
+<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
 </body>
 </html>
