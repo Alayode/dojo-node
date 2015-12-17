@@ -28,6 +28,14 @@ members may be quite volatile.
 <body>
 <h1> Fun with Genie </h1>
 
+<!-- Scripts  -->
+<script type="text/javascript" src="vendor/dojo/dojo.js"></script>
+
+
+<script type="text/javascript"
+        // src="http://o.aolcdn.com/dojo/1.1/dojo/dojo.xd.js">
+</script>
+
 <script type="text/javascript">
   // require in the module
   dojo.require("dtdg.Genie");
@@ -36,18 +44,12 @@ members may be quite volatile.
   dojo.addOnLoad(function(){
 
       //create an instance
-      var g= new dtdg.Genie;
+      var g = new dtdg.Genie;
 
       //fire it up, which takes care of the result
       g.initialize();
   });
-
-<!-- Scripts  -->
-<script type="text/javascript"
-        src="http://o.aolcdn.com/dojo/1.1/dojo/dojo.xd.js">
 </script>
-<script type="text/javascript" src="vendor/dojo/dojo.js"></script>
-
 </body>
 </html>
 
@@ -58,6 +60,8 @@ You simply require it into the page end and, once it's initialized, it "just wor
 (And so long as the user doesn't read the source code, it is truly remains magical.)
 
 A finer point worth clarifying is the use of djConfig to configure Dojo before bootstrapping:
-the modulePath
+the modulePaths is inlined to qualify the location fo the modulerelative to baseUrl, which
+is definedas the current working directory. Thus, from a physical standpoint, the file
+structure might look like
 
 -->
