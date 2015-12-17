@@ -1,0 +1,63 @@
+<!--
+Chris Samuel
+December 17 2016
+
+
+
+Dojo: The Definitve Guide
+
+In Dojo, the convention of prefixing internal members that should be treated as private with a leading underscore
+is common and will be used throughout this book. It's important to really respect such conventions because "private"
+members may be quite volatile.
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Fun with Genie | Dojo-Demo</title>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <link href="http://o.aolcdn.com/dojo/1.1/dojo/resources/dojo.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1> Fun with Genie </h1>
+
+<script type="text/javascript">
+  // require in the module
+  dojo.require("dtdg.Genie");
+
+  //safely reference dtdg.Genie inside of addOnLoad
+  dojo.addOnLoad(function(){
+
+      //create an instance
+      var g= new dtdg.Genie;
+
+      //fire it up, which takes care of the result
+      g.initialize();
+  });
+
+<!-- Scripts  -->
+<script type="text/javascript"
+        src="http://o.aolcdn.com/dojo/1.1/dojo/dojo.xd.js">
+</script>
+<script type="text/javascript" src="vendor/dojo/dojo.js"></script>
+
+</body>
+</html>
+
+<!--
+
+This example will illustrate the reusability and portability of the dtdg.Genie module.
+You simply require it into the page end and, once it's initialized, it "just works."
+(And so long as the user doesn't read the source code, it is truly remains magical.)
+
+A finer point worth clarifying is the use of djConfig to configure Dojo before bootstrapping:
+the modulePath 
+
+-->
