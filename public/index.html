@@ -11,19 +11,24 @@
   <link href="http://o.aolcdn.com/dojo/1.1/dojo/resources/dojo.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1>Sample Site Created!</h1>
+<h1 id="greeting">Sample Site Created by </h1>
 
-
+<b> The TV Shows </b>
+<div id="tvShows"></div>
 
 
 <!-- Scripts  -->
-<script type="text/javascript"
-        src="http://o.aolcdn.com/dojo/1.1/dojo/dojo.xd.js">
-</script>
 <script type="text/javascript" src="vendor/dojo/dojo.js"></script>
 <script>
 
-  
+  require([
+    'dojo/dom',
+    'dojo/dom-construct'
+  ],function (dom,domConstruct){
+    var greetingNode = dom.byId('greeting');
+    domConstruct.place('<em>Dojo!</em>', greetingNode);
+  });
+
   // console.log("I am not Dojo");
   // /* If needed, Dojo modules may be asynchronously requested into the page here via dojo.require statements..*/
   // dojo.addOnLoad(function(){
@@ -31,6 +36,59 @@
   // });
   //
 </script>
+
+<!-- XHR Example -->
+<script>
+dojo.addOnLoad(function(){
+  dojo.xhrGet({
+    url: "shows.js",//the relative url
+    handleAs: "text", //Convert to a JavaScript object
+    load: function(response,ioArgs){
+      console.log("successful xhrGet", response,ioArgs);
+      dojo.byId("tvShows").innerHTML = response;
+
+      return response; //always return the response back
+    },
+    //Run this function if the request is not successful
+    error: function(response,ioArgs){
+      //console.log("failed xhrGet ", response, ioArgs);
+
+      /* handle this error....*/
+
+      return response; //always return the response back
+    }
+  });
+
+
+  // console.log("Ready!")
+});
+
+
+
+
+
+
+
+</script>
+
+<div dojoType="dojo.data.ItemFileReadStore"
+     jsId="WishStore"
+     url="services/shows.json">
+</div>
+
+  //With the mode taken care of, we can define the grid itself
+  <table id="grid" dojoType="dojox.grid.Grid" store="wishStore" query="{wishId: '*'}" clientSort="true">
+  <thead>
+    <tr>
+      <th field="description" width="15em">Cigar</th>
+      <th field="size">Length</th>
+      <th field="origin">Origin</th>
+      <th field="wrapper">Wrapper</th>
+      <th field="shape">Shape</th>
+    </tr>
+  </thead>
+  </table>
+
 
 </body>
 </html>
