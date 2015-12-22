@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+
+<style>
+@import "vendor/dojox/grid/resources/claroGrid.css";
+
+/*Grid needs an explicit height by default*/
+#gridDiv {
+    height: 20em;
+    width: 35em;
+}
+#container {
+
+}
+</style>
+<script>
+
+dojo.require("dojox.grid.EnhancedGrid");
+dojo.require("dojo.data.ItemFileWriteStore");
+
+dojo.ready(function(){
+/*data store setup*/
+var data = {
+  identifier = 'id',
+  items:[]
+
+};
+var data_list = [
+
+         { col1: "normal","description": "Don Pepin Garcia Delicias", "size": 'But are not followed by two hexadecimal', "origin": 29.91},
+         { col1: "important", "description": "601 Habano Robusto",  "size": 'Because a % sign always indicates', "origin": 9.33},
+         { col1: "important", "description": "Black Pearl Rojo Robusto", "size": 'Signs can be selectively', "origin": 19.34}
+
+];
+
+  var rows = 60;
+  for (var i=0, l=data_list.length; i<rows; i++){
+    data.items.push(dojo.mixin({id:i+1},data_list[i%1]));
+  }
+
+  var store = new dojo.data.ItemFileWriteStore({data:data});
+})
+
+
+</script>
+<body>
+<div id="gridDiv"></div>
+
+
+</body>
+</html>
